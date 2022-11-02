@@ -21,9 +21,19 @@ namespace infinity_talent.Data.Services
                 Name = candidate.Name,
                 EmailMain = candidate.EmailMain,
                 Created = DateTime.Now
-
             };
+
             _context.Candidates.Add(_candidate);
+            _context.SaveChanges();
+
+            var _candidateContacts = new CandidateContacts()
+            {
+                Mobile = candidate.candidateContacts.Mobile,
+                Linkedln = candidate.candidateContacts.Linkedln,
+                CandidateId = _candidate.Id
+            };
+
+            _context.CandidatesContacts.Add(_candidateContacts);
             _context.SaveChanges();
         }
 

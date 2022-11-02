@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using infinity_talent.Data;
 
 namespace infinity_talent.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221102204615_CandidateContacts_2")]
+    partial class CandidateContacts_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,7 +66,23 @@ namespace infinity_talent.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CandidateId");
+
                     b.ToTable("CandidatesContacts");
+                });
+
+            modelBuilder.Entity("infinity_talent.Data.Models.CandidateContacts", b =>
+                {
+                    b.HasOne("infinity_talent.Data.Models.Candidate", null)
+                        .WithMany("CandidateContacts")
+                        .HasForeignKey("CandidateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("infinity_talent.Data.Models.Candidate", b =>
+                {
+                    b.Navigation("CandidateContacts");
                 });
 #pragma warning restore 612, 618
         }
