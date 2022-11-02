@@ -1,4 +1,5 @@
 using infinity_talent.Data;
+using infinity_talent.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,9 @@ namespace infinity_talent
             services.AddControllers();
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(ConnectionString));
+
+            services.AddTransient<CandidatesService>();
+
 
             services.AddSwaggerGen(c =>
             {

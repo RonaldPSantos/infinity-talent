@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using infinity_talent.Data;
 
 namespace infinity_talent.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221102170906_reenviando")]
+    partial class reenviando
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,45 +46,6 @@ namespace infinity_talent.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Candidates");
-                });
-
-            modelBuilder.Entity("infinity_talent.Data.Models.CandidateContacts", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("CandidateId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Linkedln")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Mobile")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CandidateId");
-
-                    b.ToTable("CandidateContacts");
-                });
-
-            modelBuilder.Entity("infinity_talent.Data.Models.CandidateContacts", b =>
-                {
-                    b.HasOne("infinity_talent.Data.Models.Candidate", "Candidate")
-                        .WithMany("CandidateContacts")
-                        .HasForeignKey("CandidateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Candidate");
-                });
-
-            modelBuilder.Entity("infinity_talent.Data.Models.Candidate", b =>
-                {
-                    b.Navigation("CandidateContacts");
                 });
 #pragma warning restore 612, 618
         }

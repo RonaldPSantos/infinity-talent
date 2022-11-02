@@ -10,6 +10,6 @@ namespace infinity_talent.Data
 
         }
 
-        public DbSet<Candidate> Candidate { get; set; }
+        public DbSet<Candidate> Candidates { get; set; }
     }
 }

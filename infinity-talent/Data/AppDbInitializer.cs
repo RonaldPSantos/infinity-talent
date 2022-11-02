@@ -14,9 +14,9 @@ namespace infinity_talent.Data
             {
                 var contex = servicesScope.ServiceProvider.GetService<AppDbContext>();
 
-                if (!contex.Candidate.Any())
+                if (!contex.Candidates.Any())
                 {
-                    contex.Candidate.AddRange(new Candidate
+                    contex.Candidates.AddRange(new Candidate
                     {
                          Name = "Firmino de Jesus",
                          EmailMain = "fjesus@teste.com.br",
@@ -44,4 +44,4 @@ namespace infinity_talent.Data
         }
     }
 }
-                        AULA 11
+                        

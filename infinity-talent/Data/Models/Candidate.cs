@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace infinity_talent.Data.Models
 {
@@ -11,5 +12,6 @@ namespace infinity_talent.Data.Models
         public string Password { get; set; }
         public DateTime Created { get; set; }
         public DateTime? Updated { get; set; }
+        public List<CandidateContacts> CandidateContacts { get; set; }
     }
 }
